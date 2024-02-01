@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Talk Through It: End User Directed Robot Learning">
+  <meta name="keywords" content="Transformers, Language Grounding, Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talk Through It</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV4ZJ9PVSV');
+  </script>
+
+  <script>
+    function updateSingleVideo() {
+      var demo = document.getElementById("single-menu-demos").value;
+      var task = document.getElementById("single-menu-tasks").value;
+      var inst = document.getElementById("single-menu-instances").value;
+
+      console.log(demo, task, inst)
+
+      var video = document.getElementById("multi-task-result-video");
+      video.src = "media/videos/rollouts/" + 
+                  demo +
+                  "_" +
+                  task +
+                  "_" +
+                  inst +
+                  ".mp4"
+      console.log(video.src);
+      video.playbackRate = 1.75;
+      video.play();
+    }
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateSingleVideo();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Talk Through It:<br>End User Directed Robot Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Carl Winge,</span>
+            <span class="author-block">Adam Imdieke,</span>
+            <span class="author-block">Bahaa Aldeeb,</span>
+            <span class="author-block">Dongyeop Kang,</span>
+            <span class="author-block">Karthik Desingh</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">University of Minnesota</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="paper/talk_through_it.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+            <!-- Arxiv Link. TODO-->
+            <span class="link-block">
+              <a target="_blank" href="https://arxiv.org"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file"></i>
+                </span>
+                <span>ArXiv</span>
+              </a>
+            </span>
+
+            <!-- Video Link. TODO-->
+            <span class="link-block">
+              <a target="_blank" href="https://www.youtube.com"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span>
+
+            <!-- Code Link. TODO-->
+            <span class="link-block">
+              <a target="_blank" href="https://github.com"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+                </a>
+            </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="subtitle has-text-centered">
+        <i>Talk Through It</i> is a robot learning framework that enables end users to teach robots skills and tasks with natural language instructions.
+        </h2>
+        <div class="columns is-vcentered  is-centered">
+          <video id="teaser" autoplay muted loop height="100%">
+            <source src="media/videos/intro.mp4"
+                    type="video/mp4">
+          </video>
+          </br>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Training generalist robot agents is an immensely difficult feat due to the adaptation to specific environments.
+            We propose selectively training robots based on end user preferences.
+          </p>
+          <p>
+            Given a <i>factory model</i> that lets an end user instruct a robot to perform lower-level actions (e.g., ‘Move left’), we show that
+            end-users can collect demonstrations using language to train their <i>home model</i> for higher-level tasks specific to their needs
+            (e.g., ‘Open the top drawer and put the block inside’). We demonstrate this hierarchical robot learning framework on
+            robot manipulation tasks using RLBench environments. Our method results in a 16% improvement on skill success rates
+            compared to a baseline method.
+          </p>
+          <p>
+            In further experiments, we explore the use of the large vision-language model (VLM), Bard, to automatically break
+            down tasks into sequences of lower-level instructions, aiming to bypass end user involvement. While the VLM achieves some
+            success, our findings reveal that having the end user in the loop results in superior performance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <!--/ Abstract. -->
+
+  </div>
+
+  <!-- Paper video. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-two-thirds">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe src="media/videos/talk_through_it.mp4"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+
+
+    <!-- Animation. -->
+    <div class="rows is-centered ">
+      <div class="row is-full-width">
+        <h2 class="title is-3">Talk Through It</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">A Framework for Learning from Language TODO</h3>
+        <div class="content has-text-justified">
+        <!-- <br> -->
+        </div>
+        <!-- <p>
+          <span class="dperact">PerAct</span> is a language-conditioned behavior-cloning agent trained with supervised learning to <i>detect actions</i>. Instead of using object-detectors, instance-segmentors, or pose-estimators to represent a scene and then learning a policy, <span class="dperact">PerAct</span> directly learns <b>perceptual representations of actions</b> conditioned on language goals. This <a target="_blank" href="https://en.wikipedia.org/wiki/Ecological_psychology">action-centric approach</a> with a unified observation and action space makes <span class="dperact">PerAct</span> applicable to a broad range of tasks involving articulated objects, deformable objects, granular media, and even some non-prehensile interactions with tools.  
+        </p>
+        </br>
+        </br>
+        <img src="media/figures/arch.png" class="interpolation-image" 
+         alt="Interpolate start reference image." />
+        </br>
+        </br>
+          <p>
+              <span class="dperact">PerAct</span> takes as input a language goal and a voxel grid reconstructed from RGB-D sensors. The voxels are split into 3D patches (like <a target="_blank" href="https://arxiv.org/abs/2010.11929">vision transformers</a> split images into 2D patches), and the language goal is encoded with a pre-trained language model. The language and voxel features are appended together as a sequence and encoded with a <a target=”_blank” href="https://www.deepmind.com/blog/building-architectures-that-can-handle-the-worlds-data">PerceiverIO Transformer</a> to learn per-voxel features. These features are then reshaped with linear layers to predict a discretized translation, rotation, gripper open, and collision avoidance action, which can be executed with a motion-planner. 
+              This action is executed with a motion-planner after which the new observation is used to predict the next discrete action in an observe-act loop until termination.  -->
+              <!-- Overall, the voxelized observation and action space provides a strong structural prior for efficiently learning 6-DoF polices. Checkout our <a target="_blank" href="https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing">Colab Tutorial</a> for an annotated guide on implemententing <span class="dperact">PerAct</span> and training it from scratch on a single GPU.
+          </p>
+        </br>
+        </br>
+        <h3 class="title is-4">Encoding High-Dimensional Input</h3>
+          <p class="justify">
+            <img src="media/figures/perceiver.png" class="interpolation-image" width="480" align="right"
+                 style="margin:0% 4% "
+                 alt="Interpolate start reference image." />
+             The input grid is 100&times;100&times;100 = 1 million voxels. After extracting 5&times;5&times;5 patches, the input is 20&times;20&times;20 = 8000 embeddings long. Despite this long sequence, Perceiver uses a small set of latent vectors to encode the input. These latent vectors are randomly initialized and trained end-to-end. This approach decouples the depth of the Transformer self-attention layers from the dimensionality of the input space, which allows us train <span class="dperact">PerAct</span> on very large input voxel grids. Perceiver has been deployed in several domains like <a target="_blank" href="https://www.deepmind.com/publications/perceiver-ar-general-purpose-long-context-autoregressive-generation">long-context auto-regressive generation</a>, <a target="_blank" href="https://arxiv.org/abs/2204.14198">vision-language models for few-shot learning</a>, <a target="_blank" href="https://arxiv.org/abs/2107.14795">image and audio classification, and optical flow prediction.</a>
+          </p>
+        <br/>
+        <br/> -->
+
+        <!--/ Re-rendering. -->
+
+        <h2 class="title is-3">Results</h2>
+
+        <div class="columns">
+          <div class="column has-text-centered">
+
+            Level
+            <div class="select is-small">
+              <select id="single-menu-demos" onchange="updateSingleVideo()">
+              <option value="lv2" selected="selected">2</option>
+              <option value="lv3">3</option>
+              </select>
+            </div>
+            model, evaluated on 
+            <div class="select is-small">     
+              <select id="single-menu-tasks" onchange="updateSingleVideo()">
+              <option value="open_drawer" selected="selected">open drawer</option>
+              <option value="slide_block_to_color_target">slide block</option>
+              <option value="sweep_to_dustpan_of_size">sweep to dustpan</option>
+              <option value="meat_off_grill">meat off grill</option>
+              <option value="turn_tap">turn tap</option>
+              <option value="put_item_in_drawer">put in drawer</option>
+              <option value="close_jar">close jar</option>
+              <option value="reach_and_drag">drag stick</option>
+              <option value="stack_blocks">stack blocks</option>
+              <option value="put_money_in_safe">put in safe</option>
+              <option value="place_wine_at_rack_location">place wine</option>
+              <option value="put_groceries_in_cupboard">put in cupboard</option>
+              <option value="push_buttons">push buttons</option>
+              <option value="stack_cups">stack cups</option>
+              </select>
+            </div>
+            episode
+            <div class="select is-small">
+              <select id="single-menu-instances" onchange="updateSingleVideo()">
+              <option value="e1" selected="selected">1</option>
+              <option value="e2">2</option>
+              <option value="e3">3</option>
+              <option value="e4">4</option>
+              <option value="e5">5</option>
+              </select>
+            </div>
+            <br/>
+            <br/>
+
+            <video id="multi-task-result-video"
+                   muted
+                   autoplay
+                   loop
+                   width="100%">
+              <source src="media/videos/rollouts/lv2_open_drawer_e1.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+        </br>
+        </br>
+    </div>
+  </div>
+</section>
+
+<br>
+
+<!-- TODO get from arxiv -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{winge2024talkthroughit,
+  title         = {Talk Through It: End User Directed Robot Manipulation Learning Framework}, 
+  author        = {winge, Carl and Imdieke, Adam and Aldeeb, Bahaa and Kang, Dongyeop and Desingh, Karthik},
+  year          = {2024},
+  eprint        = {TBD},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://github.com/peract/peract.github.io">PerAct</a> and <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
