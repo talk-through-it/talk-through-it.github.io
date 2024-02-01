@@ -18,17 +18,46 @@
   </script>
 
   <script>
+    function updateSelect() {
+      var demo = document.getElementById("single-menu-demos").value;
+      // if demo is lv2, all tasks in dropdown
+      // if demo is lv3, only put in drawer, stack blocks, push buttons, stack cups
+      if (demo == "lv2") {
+        document.getElementById("single-menu-tasks").innerHTML = 
+        '<option value="open_drawer">open drawer</option>' +
+        '<option value="slide_block_to_color_target">slide block</option>' +
+        '<option value="sweep_to_dustpan_of_size">sweep to dustpan</option>' +
+        '<option value="meat_off_grill">meat off grill</option>' +
+        '<option value="turn_tap">turn tap</option>' +
+        '<option value="put_item_in_drawer">put in drawer</option>' +
+        '<option value="close_jar">close jar</option>' +
+        '<option value="reach_and_drag">drag stick</option>' +
+        '<option value="stack_blocks">stack blocks</option>' +
+        '<option value="put_money_in_safe">put in safe</option>' +
+        '<option value="place_wine_at_rack_location">place wine</option>' +
+        '<option value="put_groceries_in_cupboard">put in cupboard</option>' +
+        '<option value="push_buttons">push buttons</option>' +
+        '<option value="stack_cups">stack cups</option>';
+      } else {
+        document.getElementById("single-menu-tasks").innerHTML = 
+        '<option value="put_item_in_drawer">put in drawer</option>' +
+        '<option value="stack_blocks">stack blocks</option>' +
+        '<option value="push_buttons">push buttons</option>' +
+        '<option value="stack_cups">stack cups</option>';
+      }
+      updateSingleVideo();
+    }
+
     function updateSingleVideo() {
       var demo = document.getElementById("single-menu-demos").value;
       var task = document.getElementById("single-menu-tasks").value;
       var inst = document.getElementById("single-menu-instances").value;
-
       console.log(demo, task, inst)
-
+      
       var video = document.getElementById("multi-task-result-video");
       video.src = "media/videos/rollouts/" + 
                   demo +
-                  "_" +
+                  "/" +
                   task +
                   "_" +
                   inst +
@@ -247,7 +276,7 @@
 
             Level
             <div class="select is-small">
-              <select id="single-menu-demos" onchange="updateSingleVideo()">
+              <select id="single-menu-demos" onchange="updateSelect()">
               <option value="lv2" selected="selected">2</option>
               <option value="lv3">3</option>
               </select>
