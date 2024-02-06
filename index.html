@@ -48,24 +48,53 @@
       updateSingleVideo();
     }
 
+    function executeIfFileExist(src, callback) {
+      var xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function() {
+          if (this.readyState === this.DONE) {
+              callback()
+          }
+      }
+      xhr.open('HEAD', src)
+    }
+
     function updateSingleVideo() {
       var demo = document.getElementById("single-menu-demos").value;
       var task = document.getElementById("single-menu-tasks").value;
       var inst = document.getElementById("single-menu-instances").value;
+
       console.log(demo, task, inst)
       
       var video = document.getElementById("multi-task-result-video");
-      video.src = "media/videos/rollouts/" + 
+      var src = "media/videos/rollouts/" + 
                   demo +
                   "/" +
                   task +
                   "_" +
-                  inst +
-                  ".mp4"
-      console.log(video.src);
-      video.playbackRate = 1.75;
-      video.play();
-    }
+                  inst
+      var src_s = src + "_s" + ".mp4";
+      var src_f = src + "_f" + ".mp4";
+      // var url = "file:///home/user/School/talk-through-it.github.io/";
+      var url = "https://talk-through-it.github.io/"
+      var url_s = url + src_s;
+      var url_f = url + src_f;
+      console.log(url_s, url_f);
+      // look is src_s file exists
+      executeIfFileExist(url_s, function() {
+          video.src = src_s;
+          // log video src
+          video.playbackRate = 1.75;
+          video.play();
+          document.getElementById("success-label").innerHTML = "Success";
+        });
+      // look if src_f file exists
+      executeIfFileExist(url_f, function() {
+          video.src = src_f;
+          video.playbackRate = 1.75;
+          video.play();
+          document.getElementById("success-label").innerHTML = "Failure";
+        });
+      }
 
   </script>
 
@@ -270,6 +299,10 @@
         <!--/ Re-rendering. -->
 
         <h2 class="title is-3">Results</h2>
+        <p>We show the first 5 evaluation episodes for the multi-skill 
+          and multi-task models that had the highest average success rates 
+        across all skills or tasks.</p>
+        <br>
 
         <div class="columns">
           <div class="column has-text-centered">
@@ -312,13 +345,14 @@
             </div>
             <br/>
             <br/>
+            Result: <span id="success-label">Success</span>
 
             <video id="multi-task-result-video"
                    muted
                    autoplay
                    loop
                    width="100%">
-              <source src="media/videos/rollouts/lv2_open_drawer_e1.mp4"
+              <source src="media/videos/rollouts/lv2/open_drawer_e1_s.mp4"
                       type="video/mp4">
             </video>
           </div>
