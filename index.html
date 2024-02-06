@@ -81,6 +81,8 @@
       console.log(url_s, url_f);
       // look is src_s file exists
       executeIfFileExist(url_s, function() {
+          var video = document.getElementById("multi-task-result-video");
+          console.log("src_s exists" + src_s);
           video.src = src_s;
           // log video src
           video.playbackRate = 1.75;
@@ -89,6 +91,7 @@
         });
       // look if src_f file exists
       executeIfFileExist(url_f, function() {
+          var video = document.getElementById("multi-task-result-video");
           video.src = src_f;
           video.playbackRate = 1.75;
           video.play();
