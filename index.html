@@ -48,14 +48,11 @@
       updateSingleVideo();
     }
 
-    function executeIfFileExist(src, callback) {
-      var xhr = new XMLHttpRequest()
-      xhr.onreadystatechange = function() {
-          if (this.readyState === this.DONE) {
-              callback()
-          }
-      }
-      xhr.open('HEAD', src)
+    function imageExists(image_url){
+      var http = new XMLHttpRequest();
+      http.open('HEAD', image_url, false);
+      http.send();
+      return http.status != 404;
     }
 
     function updateSingleVideo() {
@@ -63,7 +60,7 @@
       var task = document.getElementById("single-menu-tasks").value;
       var inst = document.getElementById("single-menu-instances").value;
 
-      console.log("version 1.0");
+      // console.log("version 1.0");
       
       var video = document.getElementById("multi-task-result-video");
       var src = "media/videos/rollouts/" + 
@@ -78,26 +75,20 @@
       var url = "https://talk-through-it.github.io/"
       var url_s = url + src_s;
       var url_f = url + src_f;
-      console.log(url_s, url_f);
+      // console.log(url_s, url_f);
       // look is src_s file exists
-      executeIfFileExist(url_s, function() {
-          var video = document.getElementById("multi-task-result-video");
-          console.log("src_s exists" + src_s);
-          video.src = src_s;
-          // log video src
-          video.playbackRate = 1.75;
-          video.play();
-          document.getElementById("success-label").innerHTML = "Success";
-        });
+      imageExists(url_s) ? video.src = src_s : video.src = src_f;
+      video.playbackRate = 1.75;
+      video.play();
       // look if src_f file exists
-      executeIfFileExist(url_f, function() {
-          var video = document.getElementById("multi-task-result-video");
-          video.src = src_f;
-          video.playbackRate = 1.75;
-          video.play();
-          document.getElementById("success-label").innerHTML = "Failure";
-        });
-      }
+      // executeIfFileExist(url_f, function() {
+      //     var video = document.getElementById("multi-task-result-video");
+      //     video.src = src_f;
+      //     video.playbackRate = 1.75;
+      //     video.play();
+      //     document.getElementById("success-label").innerHTML = "Failure";
+      //   });
+    }
 
   </script>
 
