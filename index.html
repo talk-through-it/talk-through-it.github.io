@@ -77,17 +77,15 @@
       var url_f = url + src_f;
       // console.log(url_s, url_f);
       // look is src_s file exists
-      imageExists(url_s) ? video.src = src_s : video.src = src_f;
+      if(imageExists(url_s)) {
+        video.src = src_s;
+        document.getElementById("success-label").innerHTML = "<span style=\"color: green;\">Success</span>";
+      } else {
+        video.src = src_f;
+        document.getElementById("success-label").innerHTML = "<span style=\"color: red;\">Failure</span>";
+      }
       video.playbackRate = 1.75;
       video.play();
-      // look if src_f file exists
-      // executeIfFileExist(url_f, function() {
-      //     var video = document.getElementById("multi-task-result-video");
-      //     video.src = src_f;
-      //     video.playbackRate = 1.75;
-      //     video.play();
-      //     document.getElementById("success-label").innerHTML = "Failure";
-      //   });
     }
 
   </script>
@@ -339,7 +337,7 @@
             </div>
             <br/>
             <br/>
-            Result: <span id="success-label">Success</span>
+            Result: <span id="success-label"><span style="color: green;">Success</span></span>
 
             <video id="multi-task-result-video"
                    muted
