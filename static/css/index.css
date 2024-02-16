@@ -188,3 +188,7 @@ body {
   text-align: justify;
 }
 
+li {
+  margin-left: 20px;
+  list-style-type: disc;
+}

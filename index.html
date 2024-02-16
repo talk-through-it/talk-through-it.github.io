@@ -251,17 +251,42 @@
 
     <div class="rows">
 
-
-    <!-- Animation. -->
     <div class="rows is-centered ">
       <div class="row is-full-width">
         <h2 class="title is-3">Frequently Asked Questions</h2>
 
         <!-- Interpolating. -->
         <h3 class="title is-4">What are the main contributions of this work?</h3>
-        <div class="content has-text-justified">
-        <!-- <br> -->
-        </div>
+          <ul>
+            <li>We present a method for training a robot to respond
+            to observation-dependent and observation-independent
+            language commands for primitive actions.</li>
+            <li>We show language commands for primitive actions
+            can be used in sequence to collect demonstrations for
+            training higher-level skills and tasks. This technique
+            allows non-expert end users to train a robot according
+            to their personal needs.</li>
+            <li>Our results prove that our hierarchical training method
+            leads to performance gains over a state-of-the-art base-
+            line method which doesn't utilize hierarchical training.
+            </li>
+            <li>We demonstrate a VLM can successfully chain skills
+            learned by our model to complete longer-horizon tasks.
+            </li>
+          </ul>
+        <br>
+        <h3 class="title is-4">Why have end users direct manipulation learning?</h3>
+          <p>There are an enormous number of tasks an end user might want a 
+            robot to complete in their home. We can't pretrain a model for 
+            every possibility. Even for tasks that are pretrained, the end user 
+            might want to alter the way the task is performed.</p>
+        <br>
+        <h3 class="title is-4">Why use natual language to collect demonstrations instead of teleoperation?</h3>
+          <p>Teleoperation requires additional hardware which can be expensive and challenging to set up. 
+            Even relatively cheap and user-friendly teleoperation hardware doesn't compare to the convenience 
+            and ease of use of natural language.</p>
+          </p>
+        <br>
         <!-- <p> TODO
           <span class="dperact">PerAct</span> is a language-conditioned behavior-cloning agent trained with supervised learning to <i>detect actions</i>. Instead of using object-detectors, instance-segmentors, or pose-estimators to represent a scene and then learning a policy, <span class="dperact">PerAct</span> directly learns <b>perceptual representations of actions</b> conditioned on language goals. This <a target="_blank" href="https://en.wikipedia.org/wiki/Ecological_psychology">action-centric approach</a> with a unified observation and action space makes <span class="dperact">PerAct</span> applicable to a broad range of tasks involving articulated objects, deformable objects, granular media, and even some non-prehensile interactions with tools.  
         </p>
