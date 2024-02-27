@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Talk Through It: End User Directed Robot Learning">
+        content="Talk Through It: End User Directed Manipulation Learning">
   <meta name="keywords" content="Transformers, Language Grounding, Manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Talk Through It</title>
@@ -71,8 +71,8 @@
                   inst
       var src_s = src + "_s" + ".mp4";
       var src_f = src + "_f" + ".mp4";
-      // var url = "file:///home/user/School/talk-through-it.github.io/";
-      var url = "https://talk-through-it.github.io/"
+      var url = "";
+      // var url = "https://talk-through-it.github.io/"
       var url_s = url + src_s;
       var url_f = url + src_f;
       // console.log(url_s, url_f);
@@ -114,7 +114,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Talk Through It:<br>End User Directed Robot Learning</h1>
+          <h1 class="title is-1 publication-title">Talk Through It:<br>End User Directed Manipulation Learning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">Carl Winge,</span>
             <span class="author-block">Adam Imdieke,</span>
@@ -130,7 +130,7 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a target="_blank" href="paper/talk_through_it.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -138,11 +138,11 @@
                   </span>
                   <span>Paper</span>
                 </a>
-              </span>
+              </span> -->
 
-            <!-- Arxiv Link. TODO-->
+            <!-- Arxiv Link. -->
             <span class="link-block">
-              <a target="_blank" href="https://arxiv.org"
+              <a target="_blank" href="https://arxiv.org/abs/2402.12509"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <i class="fas fa-file"></i>
@@ -151,9 +151,9 @@
               </a>
             </span>
 
-            <!-- Video Link. TODO-->
+            <!-- Video Link. -->
             <span class="link-block">
-              <a target="_blank" href="https://www.youtube.com"
+              <a target="_blank" href="https://youtu.be/j_FHSDrw6dM?si=eV4g7kp8iwU8t50H"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <i class="fab fa-youtube"></i>
@@ -162,9 +162,9 @@
               </a>
             </span>
 
-            <!-- Code Link. TODO-->
+            <!-- Code Link. -->
             <span class="link-block">
-              <a target="_blank" href="https://github.com"
+              <a target="_blank" href="https://github.com/RPM-lab-UMN/talk-through-it"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <i class="fab fa-github"></i>
@@ -209,20 +209,29 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Training generalist robot agents is an immensely difficult feat due to the adaptation to specific environments.
-            We propose selectively training robots based on end user preferences.
+            Training generalist robot agents is an immensely
+            difficult feat due to the requirement to perform a huge range
+            of tasks in many different environments. We propose selectively
+            training robots based on end-user preferences instead.
           </p>
           <p>
-            Given a <i>factory model</i> that lets an end user instruct a robot to perform lower-level actions (e.g., ‘Move left’), we show that
-            end-users can collect demonstrations using language to train their <i>home model</i> for higher-level tasks specific to their needs
-            (e.g., ‘Open the top drawer and put the block inside’). We demonstrate this hierarchical robot learning framework on
-            robot manipulation tasks using RLBench environments. Our method results in a 16% improvement on skill success rates
+            Given a factory model that lets an end user instruct a robot
+            to perform lower-level actions (e.g. ‘Move left’), we show that
+            end users can collect demonstrations using language to train
+            their home model for higher-level tasks specific to their needs
+            (e.g. ‘Open the top drawer and put the block inside’). We
+            demonstrate this hierarchical robot learning framework on
+            robot manipulation tasks using RLBench environments. Our
+            method results in a 16% improvement in skill success rates
             compared to a baseline method.
           </p>
           <p>
-            In further experiments, we explore the use of the large vision-language model (VLM), Bard, to automatically break
-            down tasks into sequences of lower-level instructions, aiming to bypass end user involvement. While the VLM achieves some
-            success, our findings reveal that having the end user in the loop results in superior performance.
+            In further experiments, we explore the use of the large vision-
+            language model (VLM), Bard, to automatically break down
+            tasks into sequences of lower-level instructions, aiming to bypass
+            end-user involvement. The VLM is unable to break tasks down
+            to our lowest level, but does achieve good results breaking high-
+            level tasks into mid-level skills. 
           </p>
         </div>
       </div>
@@ -238,7 +247,7 @@
     <div class="column is-two-thirds">
       <h2 class="title is-3">Video</h2>
       <div class="publication-video">
-        <iframe src="media/videos/talk_through_it.mp4"
+        <iframe src="https://www.youtube.com/embed/j_FHSDrw6dM?si=eV4g7kp8iwU8t50H"
                 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
@@ -251,44 +260,42 @@
 
     <div class="rows">
 
-
-    <!-- Animation. -->
     <div class="rows is-centered ">
       <div class="row is-full-width">
         <h2 class="title is-3">Frequently Asked Questions</h2>
 
         <!-- Interpolating. -->
         <h3 class="title is-4">What are the main contributions of this work?</h3>
-        <div class="content has-text-justified">
-        <!-- <br> -->
-        </div>
-        <!-- <p> TODO
-          <span class="dperact">PerAct</span> is a language-conditioned behavior-cloning agent trained with supervised learning to <i>detect actions</i>. Instead of using object-detectors, instance-segmentors, or pose-estimators to represent a scene and then learning a policy, <span class="dperact">PerAct</span> directly learns <b>perceptual representations of actions</b> conditioned on language goals. This <a target="_blank" href="https://en.wikipedia.org/wiki/Ecological_psychology">action-centric approach</a> with a unified observation and action space makes <span class="dperact">PerAct</span> applicable to a broad range of tasks involving articulated objects, deformable objects, granular media, and even some non-prehensile interactions with tools.  
-        </p>
-        </br>
-        </br>
-        <img src="media/figures/arch.png" class="interpolation-image" 
-         alt="Interpolate start reference image." />
-        </br>
-        </br>
-          <p>
-              <span class="dperact">PerAct</span> takes as input a language goal and a voxel grid reconstructed from RGB-D sensors. The voxels are split into 3D patches (like <a target="_blank" href="https://arxiv.org/abs/2010.11929">vision transformers</a> split images into 2D patches), and the language goal is encoded with a pre-trained language model. The language and voxel features are appended together as a sequence and encoded with a <a target=”_blank” href="https://www.deepmind.com/blog/building-architectures-that-can-handle-the-worlds-data">PerceiverIO Transformer</a> to learn per-voxel features. These features are then reshaped with linear layers to predict a discretized translation, rotation, gripper open, and collision avoidance action, which can be executed with a motion-planner. 
-              This action is executed with a motion-planner after which the new observation is used to predict the next discrete action in an observe-act loop until termination.  -->
-              <!-- Overall, the voxelized observation and action space provides a strong structural prior for efficiently learning 6-DoF polices. Checkout our <a target="_blank" href="https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing">Colab Tutorial</a> for an annotated guide on implemententing <span class="dperact">PerAct</span> and training it from scratch on a single GPU.
+          <ul>
+            <li>We present a method for training a robot to respond
+            to observation-dependent and observation-independent
+            language commands for primitive actions.</li>
+            <li>We show language commands for primitive actions
+            can be used in sequence to collect demonstrations for
+            training higher-level skills and tasks. This technique
+            allows non-expert end users to train a robot according
+            to their personal needs.</li>
+            <li>Our results prove that our hierarchical training method
+            leads to performance gains over a state-of-the-art base-
+            line method which doesn't utilize hierarchical training.
+            </li>
+            <li>We demonstrate a VLM can successfully chain skills
+            learned by our model to complete longer-horizon tasks.
+            </li>
+          </ul>
+        <br>
+        <h3 class="title is-4">Why have end users direct manipulation learning?</h3>
+          <p>There are an enormous number of tasks an end user might want a 
+            robot to complete in their home. We can't pretrain a model for 
+            every possibility. Even for tasks that are pretrained, the end user 
+            might want to alter the way the task is performed.</p>
+        <br>
+        <h3 class="title is-4">Why use natual language to collect demonstrations instead of teleoperation?</h3>
+          <p>Teleoperation requires additional hardware which can be expensive and challenging to set up. 
+            Even relatively cheap and user-friendly teleoperation hardware doesn't compare to the convenience 
+            and ease of use of natural language.</p>
           </p>
-        </br>
-        </br>
-        <h3 class="title is-4">Encoding High-Dimensional Input</h3>
-          <p class="justify">
-            <img src="media/figures/perceiver.png" class="interpolation-image" width="480" align="right"
-                 style="margin:0% 4% "
-                 alt="Interpolate start reference image." />
-             The input grid is 100&times;100&times;100 = 1 million voxels. After extracting 5&times;5&times;5 patches, the input is 20&times;20&times;20 = 8000 embeddings long. Despite this long sequence, Perceiver uses a small set of latent vectors to encode the input. These latent vectors are randomly initialized and trained end-to-end. This approach decouples the depth of the Transformer self-attention layers from the dimensionality of the input space, which allows us train <span class="dperact">PerAct</span> on very large input voxel grids. Perceiver has been deployed in several domains like <a target="_blank" href="https://www.deepmind.com/publications/perceiver-ar-general-purpose-long-context-autoregressive-generation">long-context auto-regressive generation</a>, <a target="_blank" href="https://arxiv.org/abs/2204.14198">vision-language models for few-shot learning</a>, <a target="_blank" href="https://arxiv.org/abs/2107.14795">image and audio classification, and optical flow prediction.</a>
-          </p>
-        <br/>
-        <br/> -->
-
-        <!--/ Re-rendering. -->
+        <br>
 
         <h2 class="title is-3">Results</h2>
         <p>We show the first 5 evaluation episodes for the multi-skill 
@@ -357,17 +364,16 @@
 
 <br>
 
-<!-- TODO get from arxiv -->
 <section class="section" id="BibTeX">
   <div class="container is-max-widescreen content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{winge2024talkthroughit,
-  title         = {Talk Through It: End User Directed Robot Manipulation Learning Framework}, 
-  author        = {winge, Carl and Imdieke, Adam and Aldeeb, Bahaa and Kang, Dongyeop and Desingh, Karthik},
-  year          = {2024},
-  eprint        = {TBD},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.RO}
+    <pre><code>@misc{winge2024talk,
+      title={Talk Through It: End User Directed Manipulation Learning}, 
+      author={Carl Winge and Adam Imdieke and Bahaa Aldeeb and Dongyeop Kang and Karthik Desingh},
+      year={2024},
+      eprint={2402.12509},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
 }</code></pre>
   </div>
 </section>
